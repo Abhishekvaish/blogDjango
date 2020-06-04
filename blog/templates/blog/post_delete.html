@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+
+<div class="row">
+	<br>
+	<div class="card-panel col s10 offset-s1 l6 offset-l3 z-depth-3 blue-grey lighten-5"> 
+		<div class="col s9 offset-s1">
+			<br>
+
+			<form method="POST" >
+				{% csrf_token %}	
+				<br><br>
+				<h4>Do You Really want to delete {{object.title}} ?</h4>
+				<p>Note : You Won't be able to restore this post</p>
+				<div class="center">
+					<br>
+					<a href="{% url 'blog:detail' object.pk %}"
+					class="btn">No</a>
+				<button class="btn waves-effect large red white-text" type="submit"><b>Yes</b></button>
+				</div>
+			</form>
+			<br><br>
+		</div>		
+	</div>
+</div>
+
+{% endblock %}

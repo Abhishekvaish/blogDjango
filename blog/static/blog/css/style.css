@@ -1,0 +1,111 @@
+body{
+	background-image: url("../images/mockup.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.materialert{
+    position: relative;
+    min-width: 150px;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.1s linear;
+    webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.materialert .material-icons{
+    margin-right: 10px;
+}
+.materialert .close-alert{
+    -webkit-appearance: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    background: 0 0;
+    font-size: 22px;
+    line-height: 1;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .7);
+    filter: alpha(opacity=40);
+    margin-bottom: -5px;
+    position: absolute;
+    top: 16px;
+    right: 5px;
+}
+.materialert.info{
+    background-color: #039be5;
+    color: #fff;
+}
+.materialert.success{
+    background-color: #43a047;
+    color: #fff;
+}
+.materialert.error{
+    background-color: #c62828;
+    color: #fff;
+}
+.materialert.danger{
+    background-color: #c62828;
+    color: #fff;
+}
+.materialert.warning{
+    background-color: #fbc02d;
+    color: #fff;
+}
+.sofia{
+	font-family: 'Sofia', cursive;
+}
+.cursive{
+    font-family: cursive;   
+}
+.josefin{
+    font-family: 'Josefin Sans',
+    sans-serif;
+}
+
+nav{
+	border-bottom: 1px solid white;
+}
+.home{
+	margin-left: 30vh;
+	margin-right: 30vh;
+	margin-top: 15vh;
+	font-size: 80px;
+}
+.card-panel{
+	margin-top: 10vh;
+	background-color: #ffffff;
+	border: 1px solid black;
+	opacity: 0.9;
+}
+.card-panel.profile{
+    margin-top: 20px;
+}
+
+
+
+.rsp{
+    opacity: 1;
+    background: #ffebee ;
+    border-radius: 10px;
+    transition: 0.5s ease transform;
+}
+.rsp:hover{
+    transform: scale(1.051);
+
+}
+@media only screen and (min-width: 1060px){
+    .rsp{
+        height: 35vh;
+    }
+}

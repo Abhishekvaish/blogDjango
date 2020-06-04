@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+<div class="row">
+	<div class="col l6 offset-l3 m8 offset-m2 s12 ">
+		{% if messages %}
+		{% for message in messages %}
+			<div class="materialert info {{ message.tags }}">
+			<i class="material-icons">check_circle</i> 
+			<span>{{message}}</span>
+			<button type="button" class="close-alert">×</button>
+			</div>
+		{% endfor %}
+		{% endif %}
+		<div class="card-panel">
+			<h3 class="center-align sofia ">Sign In</h3>
+			<form action="" method="post">
+				{% csrf_token %}
+				{% if form.non_field_errors %}
+					    {% for err in form.non_field_errors %}
+					      <p class="red-text">{{ err }}</p>
+					    {% endfor %}
+					{% endif %}
+				<br>
+				{% for field in form %}
+					<div class="input-field ">
+					{{field}}
+					<label for="{{field.auto_id}}">{{field.label}}</label>
+					</div>
+				{% endfor %}
+				<div class="center">
+					<br>
+					<button type="submit" name="submit" class="btn">Log In</button>
+					<br>
+				</div>
+			</form>
+			<br>
+			<a href="{% url 'password_reset' %}" class="blue-text">forgot password? Reset now</a>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

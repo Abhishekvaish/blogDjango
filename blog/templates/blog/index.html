@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+
+<h1 class="sofia center-align home white-text">
+Read, write and share awesome Blogs only on mydjangoblogapp.com
+</h1>	
+<br><br>
+{% if not user.is_authenticated %}
+<h5 class="sofia white-text center-align">
+<a href="{% url 'login' %}" class="white-text">SignIn</a> / <a href="{% url 'register' %}" class="white-text">SignUp</a>
+</h5>
+{% endif %}
+
+{% endblock %}

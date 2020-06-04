@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<!--Import Google Icons
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+-->
+<!--Import materialize.css
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+-->
+<!-- Materialize CSS Offline-->
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/materialize.min.css' %}">
+<!-- Import Google Fonts 
+<link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">-->
+<!--Import Custom CSS-->
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+
+
+<nav class="transparent">
+	<div class="navbar-wrapper">
+		<a href="/" class="brand-logo -text sofia center">Blog</a>
+		<a href="" class="button-collapse " data-activates="sidenavbar" ><i class="material-icons black-text">menu</i></a>
+		<ul class="right hide-on-med-and-down">
+			<li><a href="{% url 'blog:home' %}" class="">Home</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url	'profile' %}" class="">profile</a></li>
+			<li><a href="{% url 'logout' %}" class="">Logout</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}" class="">LogIn</a></li>
+			<li><a href="{% url 'register' %}" class="">Register</a></li>
+			{% endif %}
+		</ul>
+		<ul class="side-nav" id="sidenavbar">
+			<li><a href="{% url 'blog:home' %}" class="black-text">Home</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url	'profile' %}" class="black-text">profile</a></li>
+			<li><a href="{% url 'logout' %}" class="black-text">Logout</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}" class="black-text">LogIn</a></li>
+			<li><a href="{% url 'register' %}" class="black-text">Register</a></li>
+			{% endif %}
+		</ul>
+	</div>
+</nav>
+
+
+{% block body %}
+
+{% endblock %}
+
+
+
+<!--Import jQuery before materialize.js
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+<!-- Offline -->
+<script type="text/javascript" src="{% static 'blog/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/materialize.min.js' %}"></script>
+<script>
+    $('document').ready(function(){
+        // jquery goes here
+        $('.button-collapse').sideNav();
+
+        $('.close-alert').click(function(){
+			$( ".materialert" ).fadeOut( "slow");
+		});
+
+        $('.collapsible').collapsible();
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col l10 offset-l1 m12 s12 card-panel">
+		<h3 class="center-align sofia">New Post</h3>
+		<form method="post">
+			{% csrf_token %}
+				{% if form.non_field_errors %}
+					    {% for err in form.non_field_errors %}
+					      <p class="red-text">{{ err }}</p>
+					    {% endfor %}
+					{% endif %}
+				<br>
+				{% for field in form %}
+					<div class="input-field center-align">
+						{% if field.auto_id == 'id_content' %}
+							<textarea name="content" required id="id_content" class="materialize-textarea"></textarea>
+						{% else %}
+							{{field}}
+						{% endif %}
+					<label for="{{field.auto_id}}">{{field.label}}</label>
+					</div>
+				{% endfor %}
+				<div class="center">
+					<br>
+					<button type="submit" class="btn">Post</button>
+					<br><br>
+				</div>
+		</form>
+
+	</div>
+</div>
+
+{% endblock %}

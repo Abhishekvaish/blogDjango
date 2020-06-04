@@ -1,0 +1,96 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+
+
+<div class="row">
+	<div class="col l11 m12 s12 " style="height: fit-content;">
+		<div class="row" style="margin-top: 10px;">
+			{% for post in post_list %}
+			<div class="col l6 m12 s12 ">
+				<div class="card-panel rsp" style=" margin-top: 10px;" >
+					<div class="row">
+						<div class="col l4 m4 s12 center">
+							<a href="{% url 'blog:user_post' pk=post.author.pk name=post.author.first_name %}">
+							<img src="{{post.author.profile.img.url}}" class="circle responsive-img">
+							</a>
+						</div>
+						<a href="{% url 'blog:detail' pk=post.pk author=post.author.first_name %}" class="black-text">
+						<div class="col l8 m8 s12">
+							
+							<h4 class="center-align josefin flow-text">{{post.title}}</h4>
+							<p class="truncate">{{post.content}}.</p>
+							<p class="right-align cursive">Created on {{post.created_on}}</p>
+							
+						</div>
+						</a>
+					</div>				
+				</div>
+				
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% if user.is_authenticated %}
+<div class="fixed-action-btn">
+	<a href="{% url 'blog:new_post' %}" class="btn-floating btn-large white pulse">
+		<i class="material-icons black-text tooltipped" data-tooltip="New Post" data-position="left">create</i>
+	</a>
+	<ul>
+		<li>
+			<a href="{% url 'blog:user_post' pk=user.pk name=user.first_name %}" class="btn-floating btn-large white pulse">
+				<i class="material-icons black-text tooltipped" data-tooltip="My Posts" data-position="left">list</i>
+			</a>
+		</li>
+	</ul>
+</div>
+{% endif %}
+
+
+{% if is_paginated %}
+<div class="center">
+	<ul class="pagination ">
+		{% if page_obj.has_previous %}
+			<li class="transparent ">
+				<a href="?page={{page_obj.previous_page_number}}" class="circle white black-text">
+					&lsaquo;
+				</a>
+			</li>
+		{% endif %}
+		{% for num in page_obj.paginator.page_range %}
+			{% if page_obj.number == num %}
+				<li class="active transparent">
+					<a href="?page={{num}}" class="circle black white-text">{{num}}</a>
+				</li>
+			{% else %}
+				<li class=" transparent black-text">
+					<a href="?page={{num}}" class="circle white">{{num}}</a>
+				</li>
+			{% endif %}
+		{% endfor %}
+			{% if page_obj.has_next %}
+			<li class="transparent ">
+				<a href="?page={{page_obj.next_page_number}}" class="circle white black-text">
+					&rsaquo;
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</div>
+{% endif %}
+
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+<div class="row">
+	<div class="col l8 offset-l2 m10 offset-m1 s12">
+		{% if messages %}
+		{% for message in messages %}
+			<div class="materialert info {{ message.tags }}">
+			<i class="material-icons">check_circle</i> 
+			<span>{{message}}</span>
+			<button type="button" class="close-alert">×</button>
+			</div>
+		{% endfor %}
+		{% endif %}
+		<div class="card-panel profile" style="height: 50vh;">
+			<div class="col l4">
+				<img src="{{ user.profile.img.url }}" class="responsive-img circle">
+				<h5 class="josefin center-align">{{user.first_name}} {{user.last_name}}</h5>
+			</div>
+			<div class="col l8">
+				<br>
+				<h5 class="josefin">first name : {{ user.first_name }}</h5>
+				<h5 class="josefin">last name : {{user.last_name}} </h5>
+				<h5 class="josefin">email : {{user.email}} </h5><br><br><br>
+			</div>
+			<a href="{% url 'profile_update' %}" class="btn-floating btn-large right">
+				<i class="material-icons">mode_edit</i>
+			</a>
+		</div>
+	</div>
+</div>
+<h1 class="center-align sofia white-text">{{ user.email }}</h1>
+{% endblock %}
