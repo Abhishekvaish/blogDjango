@@ -6,10 +6,10 @@
 <div class="row">
 	<div class="col l10 offset-l1 m11 s12 card-panel" style="opacity: 1;">
 		<div class="row ">
-			<img src="{{post_list.0.author.profile.img.url}}" align="left" class="responsive-img circle" style="margin-right: 40px; margin-bottom: 20px;margin-left: 20px;margin-top: 30px;">
+			<img src="{{author.profile.img.url}}" align="left" class="responsive-img circle" style="margin-right: 40px; margin-bottom: 20px;margin-left: 20px;margin-top: 30px;">
 			<br><br>
-			<h3 class="cursive" style="margin-top: 30px;">{{post_list.0.author.first_name}} {{post_list.0.author.last_name}}</h3>
-			<p>{{post_list.0.author.email}}</p>
+			<h3 class="cursive" style="margin-top: 30px;">{{author.first_name}} {{author.last_name}}</h3>
+			<p>{{author.email}}</p>
 		</div>
 		<ul class="collapsible popout">
 			{% for post in post_list %}
