@@ -3,6 +3,16 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+html{
+    min-height: 100%;
+    position: relative;
+}
+footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
 .materialert{
     position: relative;
     min-width: 150px;

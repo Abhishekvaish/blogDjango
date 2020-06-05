@@ -6,12 +6,7 @@ User = get_user_model()
 
 
 # Create your models here.
-# TODO TAGS ....
-class Tag(models.Model):
-	tag_name = models.CharField(max_length=20)
 
-	def __str__(self):
-		return self.tag_name
 
 class Post(models.Model):
 	title = models.CharField(max_length=100)
@@ -25,13 +20,5 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
-
-class Comment(models.Model):
-	content = models.TextField()
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	post = models.ForeignKey(Post, on_delete=models.CASCADE)
-
-	def __str__(self):
-		return f"comment on {self.post}"
 
 

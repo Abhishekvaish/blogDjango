@@ -32,6 +32,9 @@
 			<li><a href="{% url 'blog:home' %}" class="">Home</a></li>
 			{% if user.is_authenticated %}
 			<li><a href="{% url	'profile' %}" class="">profile</a></li>
+			<li><a href="{% url 'blog:user_post' pk=user.pk name=user.first_name %}">
+				My Posts</a>
+			</li>
 			<li><a href="{% url 'logout' %}" class="">Logout</a></li>
 			{% else %}
 			<li><a href="{% url 'login' %}" class="">LogIn</a></li>
@@ -39,11 +42,23 @@
 			{% endif %}
 		</ul>
 		<ul class="side-nav" id="sidenavbar">
-			<li><a href="{% url 'blog:home' %}" class="black-text">Home</a></li>
 			{% if user.is_authenticated %}
+			<div class="user-view">
+				<div class="background">
+					<img src="{% static 'blog/images/polygon.png' %}" class="responsive-img">
+				</div>
+				<a href=""><img src="{{user.profile.img.url}}" class="circle"></a>
+				<span class="name black-text">{{user.first_name}} {{user.last_name}}</span>
+				<span class="email cursive black-text">{{user.email}}</span>
+			</div>
+			<li><a href="{% url 'blog:home' %}" class="black-text">Home</a></li>
 			<li><a href="{% url	'profile' %}" class="black-text">profile</a></li>
+			<li><a href="{% url 'blog:user_post' pk=user.pk name=user.first_name %}">
+				My Posts</a>
+			</li>
 			<li><a href="{% url 'logout' %}" class="black-text">Logout</a></li>
 			{% else %}
+			<li><a href="{% url 'blog:home' %}" class="black-text">Home</a></li>
 			<li><a href="{% url 'login' %}" class="black-text">LogIn</a></li>
 			<li><a href="{% url 'register' %}" class="black-text">Register</a></li>
 			{% endif %}
@@ -62,6 +77,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
 <!-- Offline -->
+<script src="https://kit.fontawesome.com/8806ff8ba0.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'blog/js/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'blog/js/materialize.min.js' %}"></script>
 <script>

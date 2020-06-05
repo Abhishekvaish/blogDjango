@@ -48,13 +48,6 @@
 	<a href="{% url 'blog:new_post' %}" class="btn-floating btn-large white pulse">
 		<i class="material-icons black-text tooltipped" data-tooltip="New Post" data-position="left">create</i>
 	</a>
-	<ul>
-		<li>
-			<a href="{% url 'blog:user_post' pk=user.pk name=user.first_name %}" class="btn-floating btn-large white pulse">
-				<i class="material-icons black-text tooltipped" data-tooltip="My Posts" data-position="left">list</i>
-			</a>
-		</li>
-	</ul>
 </div>
 {% endif %}
 
