@@ -16,7 +16,8 @@
 				{% for field in form %}
 					<div class="input-field center-align">
 						{% if field.auto_id == 'id_content' %}
-							<textarea name="content" required id="id_content" class="materialize-textarea"></textarea>
+							<textarea name="content" required id="id_content" class="materialize-textarea">{{field.value|default_if_none:""|spacify }}</textarea>
+
 						{% else %}
 							{{field}}
 						{% endif %}

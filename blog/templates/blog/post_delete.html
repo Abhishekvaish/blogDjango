@@ -14,7 +14,7 @@
 				<p>Note : You Won't be able to restore this post</p>
 				<div class="center">
 					<br>
-					<a href="{% url 'blog:detail' object.pk %}"
+					<a href="{% url 'blog:detail' pk=object.pk author=object.author.first_name %}"
 					class="btn">No</a>
 				<button class="btn waves-effect large red white-text" type="submit"><b>Yes</b></button>
 				</div>

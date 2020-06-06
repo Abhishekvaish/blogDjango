@@ -19,7 +19,7 @@
 						{{post.created_on}}
 					</div>
 					<div class="collapsible-body">
-						<p class="cursive">{{post.content}}</p>
+						<p class="cursive">{{post.content|linebreaksbr|truncatechars:100}}</p>
 						<a href="{% url 'blog:detail' pk=post.pk  author=post.author.first_name %}" 
 						class="btn blue lighten-4 black-text">View Article</a>
 					</div>

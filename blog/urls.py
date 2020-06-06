@@ -11,7 +11,7 @@ urlpatterns = [
 	# www.mysite.com/home
 	path('home/', views.Home.as_view(),name='home'),
 
-	# www.mysite.com/post/22/
+	# www.mysite.com/post/22/author?=name
 	path('post/<int:pk>/author?=<str:author>/', views.DetailPost.as_view(),name='detail'),
 
 	# www.mysite.com/new_post/

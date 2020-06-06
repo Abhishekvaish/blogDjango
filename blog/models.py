@@ -16,7 +16,7 @@ class Post(models.Model):
 	#tags = models.ManyToManyField(Tag)
 
 	def get_absolute_url (self):
-		return reverse('blog:detail',kwargs={"pk":self.pk})
+		return reverse('blog:detail',kwargs={"pk":self.pk,"author":self.author.first_name})
 
 	def __str__(self):
 		return self.title

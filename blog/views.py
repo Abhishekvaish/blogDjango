@@ -3,6 +3,25 @@ from django.views.generic import ListView,DetailView,CreateView,DeleteView,Updat
 from .models import Post
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.urls import reverse_lazy
+
+from django.template import Library
+from django.template.defaultfilters import stringfilter
+from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
+import re
+
+register = Library()
+
+@stringfilter
+def spacify(value, autoescape=None):
+	if autoescape:
+		esc = conditional_escape
+	else:
+		esc = lambda x: x
+	return mark_safe(re.sub("\s", '&'+'nbsp;', esc(value)))
+spacify.needs_autoescape = True
+register.filter(spacify)
 
 # Create your views here.
 def index(request):
@@ -54,7 +73,16 @@ class DeletePost(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 	model = Post
 	template_name = 'blog/post_delete.html' #default = 'blog/post_delete.html'
 	pk = None
-	success_url = '/' #reverse('blog:user_post',kwargs={'pk':pk})
+	#success_url = '/' #reverse('blog:user_post',kwargs={'pk':pk})
+
+	def get_success_url(self):
+		user = self.request.user
+		return reverse_lazy('blog:user_post',kwargs={"pk":user.pk,"name":user.first_name})
+
+
+
+
+
 	def test_func(self):
 		post = self.get_object()
 		pk = self.request.user.pk
