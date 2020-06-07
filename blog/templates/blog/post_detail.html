@@ -1,5 +1,4 @@
 {% extends 'blog/base.html' %}
-
 {% block body %}
 <div class="row">
 	<div class="col l10 offset-l1 m11 s12">
@@ -8,11 +7,11 @@
 				<a href="{% url 'blog:user_post' pk=post.author.pk name=post.author.first_name %}">
 					<img src="{{post.author.profile.img.url}}" align="left" class="responsive-img circle" style="margin-right: 40px; margin-bottom: 20px;margin-left: 20px;margin-top: 10px;">
 				</a>
-				<h2>{{post.title}}</h2>
+				<h2>{{post.title|title}}</h2>
 				<h5 class="josefin blue-text right-align">- {{post.author.first_name}} {{post.author.last_name}}</h5>
 				<p class="right-align">{{post.created_on}}</p>
 			</div>
-				<p class="flow-text cursive">{{post.content|linebreaksbr|spacify }}</p>
+			<p class=" cursive">{{post.content|linebreaksbr }}</p>
 			
 		</div>
 		{% if user == post.author %}

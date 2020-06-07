@@ -4,7 +4,7 @@ from .models import Post
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.urls import reverse_lazy
-
+'''
 from django.template import Library
 from django.template.defaultfilters import stringfilter
 from django.utils.html import conditional_escape
@@ -22,7 +22,7 @@ def spacify(value, autoescape=None):
 	return mark_safe(re.sub("\s", '&'+'nbsp;', esc(value)))
 spacify.needs_autoescape = True
 register.filter(spacify)
-
+'''
 # Create your views here.
 def index(request):
 	return render(request, 'blog/index.html')

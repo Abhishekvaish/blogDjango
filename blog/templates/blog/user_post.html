@@ -15,7 +15,7 @@
 			{% for post in post_list %}
 				<li>
 					<div class="collapsible-header blue lighten-4">
-						{{post.title}}<br>
+						{{post.title|title}}<br>
 						{{post.created_on}}
 					</div>
 					<div class="collapsible-body">
